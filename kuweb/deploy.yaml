@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuweb-deployment
+spec:
+# 생성할 pod의 복제본을 몇개까지 만들지
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuweb-label
+  template:
+    metadata:
+      name: kuweb-pod
+      annotations:
+        kubernetes.io/change-cause: "Deployment Created"
+      labels:
+        app: kuweb-label
+    spec:
+      containers:
+      - name: kuweb
+        image: testweb:1.0
+        resources:
+          requests: 
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 8080
