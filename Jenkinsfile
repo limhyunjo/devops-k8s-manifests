@@ -21,8 +21,8 @@ pipeline {
             steps {
                 sh 'git checkout main'
                 sh 'git config --list'
-                sh 'git config user.name "ismoon"'
-                sh 'git config user.email "ismoon@gmail.com"'
+                sh 'git config user.name "limhyunjo"'
+                sh 'git config user.email "limhyunjo@gmail.com"'
                 sh 'git config --list'
                 sh 'git add .'
                 sh "git commit -m 'Update Image Version ${params.DOCKER_IMAGE_VERSION}'"
