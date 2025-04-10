@@ -27,7 +27,9 @@ pipeline {
                 sh 'git add .'
                 sh "git commit -m 'Update Image Version ${params.DOCKER_IMAGE_VERSION}'"
                 sh 'git status'
+                sshagent(['github-manifests-access-key']) {
                 sh 'git push'
+                }
             }
         }
     }
